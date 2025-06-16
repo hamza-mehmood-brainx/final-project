@@ -1,0 +1,197 @@
+:root {
+  --background: #fffdf7;
+  --nav-step-active-color: #3167ff;
+  --black: #000000;
+  --plan-description-head-color: #333333;
+  --nav-background: #ffffff;
+  --red-orange-price: #d75d33;
+  --red-color: #ff0000;
+  --white: white;
+  --btn-purple: #af2081;
+  --btn-dark-blue-purple: #533174;
+}
+
+.main-body {
+  background-color: var(--background);
+}
+
+/* Steps header styling */
+.nav-container {
+  border-bottom: 0.25px solid var(--accordian-bottom-border);
+}
+.steps-container {
+  background-color: var(--nav-background);
+  padding: 0;
+  max-width: 100%;
+  width: 100%;
+  min-height: 60px;
+  height: 100%;
+}
+.header-list.active {
+  color: var(--nav-step-active-color);
+}
+#wizard section {
+  display: none;
+}
+#wizard section.active {
+  display: block;
+}
+.header-list {
+  list-style-type: none;
+  font-weight: 500;
+}
+.header-list:not(.active):hover {
+  text-decoration: underline;
+}
+.header-list {
+  cursor: default;
+}
+.header-list.previous,
+.header-list.active {
+  cursor: pointer;
+}
+.header-list.previous:hover {
+  text-decoration: underline;
+}
+.header-list:not(.previous):hover,
+.header-list.active:hover {
+  text-decoration: none;
+}
+
+/* -------------------------Plan Section--------------------  */
+/* Logo & Description Section */
+.section-container .plan-section {
+  background-color: var(--background);
+}
+.logo-description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.logo-description .logo {
+  width: 84px;
+  height: 87px;
+  margin-right: 20px;
+}
+
+.description-head {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--plan-description-head-color);
+  letter-spacing: 0px;
+  max-width: 600px;
+}
+.description-text {
+  max-width: 723px;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 0px;
+}
+.bigger-box-price {
+  color: var(--red-orange-price);
+}
+
+/* Plans Card Styling */
+
+.plan-meals-card {
+  background-color: transparent;
+  text-align: center;
+  cursor: pointer;
+}
+.plan-card-img-block {
+  width: 100%;
+  max-height: 209px;
+  overflow: hidden;
+  border-radius: 15px;
+  position: relative;
+}
+.sale-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: var(--nav-background);
+  color: var(--plan-description-head-color);
+  border-radius: 15px;
+  z-index: 10;
+}
+.plan-meal-image {
+  max-height: 209px;
+  max-width: 278px;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+  object-fit: cover;
+}
+.plan-card-img-block:hover .plan-meal-image {
+  transform: scale(1.1);
+}
+.plan-meals-card:nth-last-child(-n + 3)
+  .plan-card-img-block:hover
+  .plan-meal-image {
+  animation: blink-once 0.09s steps(1, start);
+}
+@keyframes blink-once {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.meal-description {
+  line-height: 0.5;
+  font-weight: 600;
+}
+.meal-count {
+  font-size: 24px;
+  font-weight: 700;
+}
+.plan-week {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--plan-description-head-color);
+}
+.plan-total-price {
+  color: var(--red-orange-price);
+}
+
+/* Get Started button */
+.get-started {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 160px;
+  height: 100%;
+}
+.shipping-text {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  letter-spacing: 0px;
+  color: var(--black);
+}
+.get-started-btn {
+  max-width: 150px;
+  width: 100%;
+  min-height: 45px;
+  height: 100%;
+  background: transparent
+    linear-gradient(
+      119deg,
+      var(--btn-purple) 0%,
+      var(--btn-dark-blue-purple) 100%
+    )
+    0% 0% no-repeat;
+  border-radius: 4px;
+  border: none;
+  color: var(--white);
+  transition: max-width 0.3s;
+}
+.get-started-btn:hover {
+  max-width: 400px;
+  width: 100%;
+}
