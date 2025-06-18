@@ -35,6 +35,21 @@ jQuery(function () {
     });
   }
 
+  //Delievry Day Selection
+  function initDateSelection() {
+    $(".next-button-delivery").on("click", function () {
+      const selectedDate = $(".date-container .selected")
+        .find("span")
+        .first()
+        .text()
+        .trim();
+      console.log("Selected Date:", selectedDate);
+      storage.set("selectedDay", selectedDate);
+      storage.set("currentStep", "meals-step");
+      navigateToStep("meals-step");
+    });
+  }
+
   // Allow backward step navigation from header
   function enableStepHeaderNavigation() {
     $(".header-list").on("click", function () {
@@ -55,12 +70,8 @@ jQuery(function () {
 
     initPlanSelection();
     enableStepHeaderNavigation();
-
-    const savedDate = storage.get("selectedDay");
-    if (savedDate) {
-      updateDeliveryDayDisplay(savedDate);
-    }
   }
 
   initializeFlow();
+  initDateSelection();
 });

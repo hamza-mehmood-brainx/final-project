@@ -1,0 +1,35 @@
+[
+      {
+      "name": "Mix Veggies",
+      "imagePath": "assets/images/meal.png",
+      "speciality": "with Cabbage, Carrots & Chicken",
+      "gluten": "Gluten Free",
+      "calories": "530 Cals",
+      "carbs": "35 Carbs",
+      "protein": "22 Protiens",
+      "price":10,
+      "specialMeal":false
+    },
+     {
+      "name": "Mix Veggies",
+      "imagePath": "assets/images/meal.png",
+      "speciality": "with Cabbage, Carrots & Chicken",
+      "gluten": "Gluten Free",
+      "calories": "530 Cals",
+      "carbs": "35 Carbs",
+      "protein": "22 Protiens",
+      "price":10,
+      "specialMeal":false
+    },
+     {
+      "name": "Mix Veggies",
+      "imagePath": "assets/images/meal.png",
+      "speciality": "with Cabbage, Carrots & Chicken",
+      "gluten": "Gluten Free",
+      "calories": "530 Cals",
+      "carbs": "35 Carbs",
+      "protein": "22 Protiens",
+      "price":10,
+      "specialMeal":false
+    }
+]

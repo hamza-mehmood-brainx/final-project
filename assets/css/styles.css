@@ -11,6 +11,9 @@
   --btn-dark-blue-purple: #533174;
   --nav-border-color: #d0d1d1;
   --accordian-bottom-border: #ddd;
+  --date-item-border: #707070;
+  --meal-border: #dfdfdf;
+  --checkout-btn: #00000029;
 }
 
 @font-face {
@@ -48,10 +51,10 @@
 .nav-container .steps-container .header-list.active {
   color: var(--nav-step-active-color);
 }
-#wizard section {
+#main-steps-section section {
   display: none;
 }
-#wizard section.active {
+#main-steps-section section.active {
   display: block;
 }
 .header-list {
@@ -225,25 +228,84 @@
 
 /* -----------Day Section--------  */
 /* Date Section */
-.scrolling-section {
+
+.date-container {
+  max-height: 336px;
+  height: 100%;
+  max-width: 400px;
+  border: none;
+  margin: auto;
+  cursor: pointer;
+}
+.date-container .date-item {
+  padding: 10px;
+  border-top: 0.5px solid var(--date-item-border);
+  border-bottom: 0.5px solid var(--date-item-border);
+  border-left: 1px solid var(--date-item-border);
+  max-height: 46px;
+  max-width: 99%;
   display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  padding: 10px 0;
-  border: 2px solid var(--nav-border-color);
-  max-height: 250px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--nav-background);
+  transition: transform 0.4s ease;
+}
+.date-container .date-item:not(.selected):hover {
+  transform: translateX(4px);
+}
+.date-container .date-item.selected {
+  border-left: 8px solid var(--red-orange-price);
+}
+.date-container .date-item .popular-text {
+  display: none;
+  color: var(--red-orange-price);
+  font-size: 12px;
+  text-align: right;
+}
+.date-container .date-item.selected .popular-text {
+  display: none;
+}
+.date-container .date-text-item {
+  padding: 15px;
+}
+.date-container .date-item:first-child .popular-text {
+  display: inline;
 }
 
-.date-card {
+.next-button-wrapper .next-button-delivery {
+  max-width: 405px;
+  width: 100%;
+  min-height: 45px;
+  height: 100%;
+  background: transparent
+    linear-gradient(
+      119deg,
+      var(--btn-purple) 0%,
+      var(--btn-dark-blue-purple) 100%
+    )
+    0% 0% no-repeat;
+  border-radius: 4px;
+  border: none;
+  color: var(--white);
+  font-size: 16px;
+}
+.first-delivery-description {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 300px;
-  border: 1px solid var(--nav-border-color);
-  padding: 10px 20px;
+  min-height: 70px;
+  height: 100%;
 }
+.first-delivery-description .first-delivery-text {
+  font-size: 12px;
+  font-weight: 700;
+}
+
 /* Question Section */
+.accordion-button::after,
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' stroke='%23D75D33' stroke-width='2' width='24' height='20'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E%0A");
+}
 .common-question-head,
 .day-section-head {
   font-size: 48px;
@@ -299,6 +361,52 @@
   padding: 1rem 0.5rem;
 }
 
+/*----- Meal Section----- */
+.meal-card {
+  border: 1px solid var(--meal-border);
+  position: relative;
+}
+.meal-card .meal-image {
+  max-width: 100%;
+  width: 100%;
+  max-height: 165px;
+  height: 100%;
+}
+.meal-card .meal-info .meal-details {
+  gap: 1px;
+}
+
+.meal-gluten,
+.meal-calories,
+.meal-carbs,
+.meal-protein,
+.meal-speciality {
+  font-size: 11px;
+  color: var(--date-item-border);
+}
+
+.meal-card .meal-info .meal-details .add-btn {
+  font-size: 14px;
+  max-width: 65px;
+  width: 100%;
+  min-height: 33px;
+  height: 100%;
+  color: var(--white);
+  background: transparent
+    linear-gradient(
+      135deg,
+      var(--btn-purple) 0%,
+      var(--btn-dark-blue-purple) 100%
+    )
+    0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px var(--checkout-btn);
+  border-radius: 4px;
+  border: none;
+}
+.meal-card .meal-info .meal-details .add-btn:disabled {
+  opacity: 0.7;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 980px) {
@@ -343,8 +451,7 @@
   }
 
   /* Plan Card Description */
-  .meal-description {
-  }
+
   .meal-count {
     font-size: 16px;
   }
@@ -363,11 +470,16 @@
 
   /* Day Section */
 
-  .common-question-head {
+  .common-question-head,
+  .day-section-head {
     font-size: 30px;
   }
 
   .accordian-main-panel {
     width: 95%;
+  }
+
+  .date-container .date-text-item {
+    font-size: 14px;
   }
 }
