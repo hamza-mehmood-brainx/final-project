@@ -1,3 +1,5 @@
+import { initMealScript } from "./mealScript.js";
+
 (function () {
   // function to find next monday
   function findUpcomingMonday(startDate) {
@@ -72,9 +74,11 @@
     const options = { weekday: "long", day: "numeric", month: "short" };
     const formatted = new Intl.DateTimeFormat("en-US", options).format(date);
     const [weekday, day, month] = formatted.split(" ");
-    return `<strong>${weekday}</strong> ${day} ${month}`;
+    return `<strong class="date-day">${weekday}</strong> ${day} ${month}`;
   }
 
   // Start the date render
   renderDateOptions();
+  // Meal Page Script
+  initMealScript();
 })();
