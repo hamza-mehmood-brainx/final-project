@@ -61,6 +61,18 @@ jQuery(function () {
     });
   }
 
+  // Meal Selection and Proceed to Checkout
+  function initMealStep() {
+    $(".next-btn-cart").on("click", function () {
+      if (!$(this).is(":disabled")) {
+        const storedDate = storage.get("selectedDay");
+
+        storage.set("currentStep", "checkout-step");
+        navigateToStep("checkout-step");
+      }
+    });
+  }
+
   // Allow backward step navigation from header
   function enableStepHeaderNavigation() {
     $(".header-list").on("click", function () {
@@ -85,4 +97,5 @@ jQuery(function () {
 
   initializeFlow();
   initDateSelection();
+  initMealStep();
 });
