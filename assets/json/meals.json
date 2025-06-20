@@ -1,7 +1,7 @@
 [
     {
       "name": "Mix Veggies",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/1@2x.png",
       "speciality": "with Cabbage, Carrots & Chicken",
       "gluten": "Gluten Free",
       "calories": "530 Cals",
@@ -12,7 +12,7 @@
     },
     {
       "name": "Protein-Packed Chicken Salad",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/2@2x.png",
       "speciality": "with Fruits & Seeds",
       "gluten": "Gluten Free",
       "calories": "90 Cals",
@@ -23,18 +23,20 @@
     },
     {
       "name": "Super-Grain Snacks Bowl",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/3@2x.png",
       "speciality": "with Avocado & Veggies",
       "gluten": "Gluten Free",
       "calories": "600 Cals",
       "carbs": "50 Carbs",
       "protein": "12 Protiens",
       "price":15,
-      "specialMeal":true
+      "specialMeal":true,
+      "extraPrice": 11.49,
+      "specialColor": "#000000"
     },
     {
       "name": "Stir Fried Rice Noodles Bowl",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/4@2x.png",
       "speciality": "with Mushroom & Spanish Pepper",
       "gluten": "Gluten Free",
       "calories": "43 Cals",
@@ -47,7 +49,7 @@
     },
     {
       "name": "Cauliflower Pilaf",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/5@2x.png",
       "speciality": "with Chickpea & Cheese",
       "gluten": "Gluten Free",
       "calories": "10 Cals",
@@ -59,7 +61,7 @@
     },
     {
       "name": "Keto-Friendly Pasta Bowl",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/6@2x.png",
       "speciality": "Keto-Friendly Pasta Bowl",
       "gluten": "Gluten Free",
       "calories": "73 Cals",
@@ -71,7 +73,7 @@
     },
     {
       "name": "Vegetable Soup Bowl",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/7@2x.png",
       "speciality": "with Chicken & Sweet Kabu",
       "gluten": "Gluten Free",
       "calories": "80 Cals",
@@ -83,7 +85,7 @@
     },
     {
       "name": "Kashmiri Rice",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/8@2x.png",
       "speciality": "with Chicken & Coconut",
       "gluten": "Gluten Free",
       "calories": "100 Cals",
@@ -95,7 +97,7 @@
     },
     {
       "name": "Mix Veggies",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/1@2x.png",
       "speciality": "with Cabbage, Carrots & Chicken",
       "gluten": "Gluten Free",
       "calories": "530 Cals",
@@ -105,19 +107,21 @@
       "specialMeal":false
     },
     {
-      "name": "Super-Grain Snacks Bowl",
-      "imagePath": "assets/images/meal.jpg",
-      "speciality": "with Avocado & Veggies",
+      "name": "Ground Beef Butter",
+      "imagePath": "assets/images/3@2x.png",
+      "speciality": "with Pesto & Eggs",
       "gluten": "Gluten Free",
       "calories": "600 Cals",
       "carbs": "50 Carbs",
       "protein": "12 Protiens",
       "price":15,
-      "specialMeal":true
+      "specialMeal":true,
+      "extraPrice": 1.49,
+      "specialColor": "#A9A9A9"
     },
     {
       "name": "Protein-Packed Chicken Salad",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/2@2x.png",
       "speciality": "with Fruits & Seeds",
       "gluten": "Gluten Free",
       "calories": "90 Cals",
@@ -128,7 +132,7 @@
     },
     {
       "name": "Stir Fried Rice Noodles Bowl",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/4@2x.png",
       "speciality": "with Mushroom & Spanish Pepper",
       "gluten": "Gluten Free",
       "calories": "43 Cals",
@@ -141,7 +145,7 @@
     },
     {
       "name": "Cauliflower Pilaf",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/5@2x.png",
       "speciality": "with Chickpea & Cheese",
       "gluten": "Gluten Free",
       "calories": "10 Cals",
@@ -153,7 +157,7 @@
     },
     {
       "name": "Keto-Friendly Pasta Bowl",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/6@2x.png",
       "speciality": "Keto-Friendly Pasta Bowl",
       "gluten": "Gluten Free",
       "calories": "73 Cals",
@@ -165,7 +169,7 @@
     },
     {
       "name": "Vegetable Soup Bowl",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/7@2x.png",
       "speciality": "with Chicken & Sweet Kabu",
       "gluten": "Gluten Free",
       "calories": "80 Cals",
@@ -177,7 +181,7 @@
     },
     {
       "name": "Kashmiri Rice",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/8@2x.png",
       "speciality": "with Chicken & Coconut",
       "gluten": "Gluten Free",
       "calories": "100 Cals",
@@ -188,12 +192,9 @@
 
     },
 
-
-
-
     {
       "name": "Mix Veggies",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/1@2x.png",
       "speciality": "with Cabbage, Carrots & Chicken",
       "gluten": "Gluten Free",
       "calories": "530 Cals",
@@ -204,7 +205,7 @@
     },
     {
       "name": "Protein-Packed Chicken Salad",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/2@2x.png",
       "speciality": "with Fruits & Seeds",
       "gluten": "Gluten Free",
       "calories": "90 Cals",
@@ -215,18 +216,20 @@
     },
     {
       "name": "Super-Grain Snacks Bowl",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/3@2x.png",
       "speciality": "with Avocado & Veggies",
       "gluten": "Gluten Free",
       "calories": "600 Cals",
       "carbs": "50 Carbs",
       "protein": "12 Protiens",
       "price":15,
-      "specialMeal":true
+      "specialMeal":true,
+      "extraPrice": 1.49,
+      "specialColor": "#000000"
     },
     {
       "name": "Stir Fried Rice Noodles Bowl",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/4@2x.png",
       "speciality": "with Mushroom & Spanish Pepper",
       "gluten": "Gluten Free",
       "calories": "43 Cals",
@@ -239,7 +242,7 @@
     },
     {
       "name": "Cauliflower Pilaf",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/5@2x.png",
       "speciality": "with Chickpea & Cheese",
       "gluten": "Gluten Free",
       "calories": "10 Cals",
@@ -251,7 +254,7 @@
     },
     {
       "name": "Keto-Friendly Pasta Bowl",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/6@2x.png",
       "speciality": "Keto-Friendly Pasta Bowl",
       "gluten": "Gluten Free",
       "calories": "73 Cals",
@@ -263,7 +266,7 @@
     },
     {
       "name": "Vegetable Soup Bowl",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/7@2x.png",
       "speciality": "with Chicken & Sweet Kabu",
       "gluten": "Gluten Free",
       "calories": "80 Cals",
@@ -275,7 +278,7 @@
     },
     {
       "name": "Kashmiri Rice",
-      "imagePath": "assets/images/meal.jpg",
+      "imagePath": "assets/images/8@2x.png",
       "speciality": "with Chicken & Coconut",
       "gluten": "Gluten Free",
       "calories": "100 Cals",

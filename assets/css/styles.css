@@ -16,6 +16,9 @@
   --checkout-btn: #00000029;
   --border-line: #c7c8c9;
   --meal-card-border-color: #ededed;
+  --cart-meal-bg: #f3f3f3;
+  --blackish-grey: #717171;
+  --special-div-background: #000000;
 }
 
 @font-face {
@@ -99,14 +102,14 @@
   margin-right: 20px;
 }
 
-.description-head {
+.logo-description .description-head {
   font-size: 36px;
   font-family: "Roboto-Medium", sans-serif;
   color: var(--plan-description-head-color);
   letter-spacing: 0px;
   max-width: 600px;
 }
-.description-text {
+.logo-description .description-text {
   max-width: 723px;
   font-family: "Roboto-Regular";
   width: 100%;
@@ -124,12 +127,12 @@
 
 /* Plans Card Styling */
 
-.plan-meals-card {
+.plan-cards .plan-meals-card {
   background-color: transparent;
   text-align: center;
   cursor: pointer;
 }
-.plan-card-img-block {
+.plan-meals-card .plan-card-img-block {
   width: 100%;
   max-height: 209px;
   max-width: 278px;
@@ -137,7 +140,7 @@
   border-radius: 15px;
   position: relative;
 }
-.sale-tag {
+.plan-meals-card .plan-card-img-block .sale-tag {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -148,7 +151,7 @@
   font-family: "Roboto-Medium";
   font-size: 14px;
 }
-.plan-meal-image {
+.plan-meals-card .plan-card-img-block .plan-meal-image {
   width: 100%;
   height: 100%;
   transition: transform 0.3s ease-in-out;
@@ -171,31 +174,31 @@
     opacity: 0;
   }
 }
-.meal-description {
+.plan-meals-card .meal-description {
   line-height: 0.5;
   font-weight: 600;
 }
-.meal-count {
+.plan-meals-card .meal-description .meal-count {
   font-size: 20px;
   font-family: "Roboto-Bold", sans-serif;
 }
-.plan-week {
+.plan-meals-card .meal-description .meal-count .plan-week {
   font-size: 14px;
   font-family: "Roboto-Medium";
   font-weight: 500;
   color: var(--plan-description-head-color);
 }
-.plan-total-price-text {
+.plan-meals-card .meal-description .plan-total-price-text {
   font-family: "Roboto-Medium", sans-serif;
   font-size: 16px;
   font-weight: 600;
   color: var(--black);
 }
-.plan-price {
+.plan-meals-card .meal-description .plan-price {
   font-family: "Roboto-Medium", sans-serif;
   color: var(--black);
 }
-.plan-total-price {
+.plan-meals-card .meal-description .plan-total-price {
   font-family: "Roboto-Bold";
   font-size: 16px;
   color: var(--red-orange-price);
@@ -239,7 +242,7 @@
   color: var(--white);
   transition: max-width 0.3s;
 }
-.get-started-btn:hover {
+.get-started .get-started-btn:hover {
   max-width: 400px;
   width: 100%;
 }
@@ -351,7 +354,7 @@
   font-family: "Roboto-Medium", sans-serif;
 }
 
-.accordion-button {
+.accordion-header .accordion-button {
   font-size: 16px;
   font-family: "Roboto-Medium", sans-serif;
   color: var(--black);
@@ -362,16 +365,16 @@
   min-height: 70px;
   height: 100%;
 }
-.accordion-button:not(.collapsed) {
+.accordion-header .accordion-button:not(.collapsed) {
   color: var(--red-orange-price);
   background-color: transparent;
   box-shadow: none;
   border-bottom: 1px solid var(--accordian-bottom-border);
 }
-.accordion-button::after {
+.accordion-header .accordion-button::after {
   fill: var(--red-orange-price);
 }
-.accordion-button:focus {
+.accordion-header .accordion-button:focus {
   box-shadow: none;
 }
 .accordian-panel-item {
@@ -383,17 +386,17 @@
   width: 77%;
   margin: 0 auto;
 }
-.accordian-description {
+.accordian-main-panel .accordian-description {
   width: 98%;
   font-size: 14px;
   margin: auto;
 }
-.accordian-end-space {
+.accordian-main-panel .accordian-end-space {
   min-height: 300px;
   height: 100%;
 }
 
-.accordion-body {
+.accordian-main-panel .accordion-body {
   padding: 1rem 0.5rem;
 }
 
@@ -438,7 +441,7 @@
   border-right: 0.5px solid var(--meal-card-border-color);
 }
 .special-meal-div {
-  background-color: var(--black);
+  background-color: var(--special-div-background);
 }
 .special-meal-div .meal-name,
 .special-meal-div .meal-speciality,
@@ -473,7 +476,7 @@
 }
 .meal-card .special-tag {
   position: absolute;
-  bottom: 0;
+  bottom: 6px;
   left: 0;
   background-color: var(--red-orange-price);
   color: var(--white);
@@ -496,47 +499,196 @@
   right: 0;
   max-height: 94%;
   height: 100%;
-  width: 100%;
-  max-width: 25%;
-  display: flex;
-  flex-direction: column;
 }
 
-.cart-items-container {
+.add-to-cart-container .cart-items-container {
   overflow-y: auto;
   flex-grow: 1;
   position: relative;
   display: block;
 }
-.meal-cards-added-cart {
+.add-to-cart-container .meal-cards-added-cart {
   max-height: 400px;
   height: auto;
   overflow-y: auto;
 }
+
+.add-to-cart-container .subtotal-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--nav-background);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  border-radius: 15px 15px 0 0;
+  max-height: 135px;
+  height: 100%;
+  padding: 10px;
+}
+.add-to-cart-container .subtotal-container .subtotal-text {
+  font-family: "Roboto-Regular";
+  font-size: 14px;
+}
+.add-to-cart-container .subtotal-container .next-btn-cart {
+  background: transparent
+    linear-gradient(
+      105deg,
+      var(--btn-purple) 0%,
+      var(--btn-dark-blue-purple) 100%
+    )
+    0% 0% no-repeat padding-box;
+  max-width: 95%;
+  width: 100%;
+  min-height: 40px;
+  height: 100%;
+  color: var(--white);
+  border: none;
+  font-family: "Roboto-Bold";
+  font-size: 16px;
+}
+.add-to-cart-container .subtotal-container .next-btn-cart.disabled {
+  opacity: 0.5;
+}
+.add-to-cart-container .subtotal-container .enter-msg-cart {
+  font-family: "Roboto-Bold";
+  color: var(--red-orange-price);
+  font-size: 12px;
+}
+.subtotal-container #subtotal-cart-price {
+  color: var(--red-orange-price);
+  font-family: "Roboto-Medium";
+}
+.my-delivery-cart,
+.clear-all,
+.cart-items-container .cart-shipping {
+  font-family: "Roboto-Regular";
+  font-size: 12px;
+}
+
+.delivery-date-cart-div .clear-all:hover {
+  cursor: pointer;
+}
+.delivery-date-cart-div .my-delivery-cart {
+  margin-bottom: 0;
+}
+
+.cart-items-container .order-summary-cart .cart-order-summary-head {
+  font-family: "Roboto-Bold";
+  font-size: 14px;
+}
+
+.cart-items-container .order-summary-cart .order-cart-meal-count,
+.cart-items-container .order-summary-cart #meals-sum-price,
+.order-summary-cart .subtotal-text-order-cart {
+  font-family: "Roboto-Regular";
+  font-size: 14px;
+}
+.cart-items-container #delivery-date-cart {
+  font-family: "Roboto-Bold";
+}
+.meal-cards-added-cart .cart-meal-card {
+  min-height: 75px;
+  height: 100%;
+  background-color: var(--cart-meal-bg);
+}
+.meal-cards-added-cart .cart-meal-card .cart-meal-info .cart-meal-name,
+.order-summary-cart #subtotal-order-price {
+  font-family: "Roboto-Bold";
+  font-size: 14px;
+}
+.meal-cards-added-cart .cart-meal-card .cart-meal-img {
+  max-width: 35%;
+  width: 100%;
+}
+.cart-icon-container {
+  border: 1px solid var(--order-summary-bodrer);
+  border-radius: 18px;
+  max-width: 20%;
+  width: 100%;
+  min-height: 30px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-item-count {
+  color: var(--red-orange-price);
+}
+.hidden {
+  display: none;
+}
+.cart-meal-card .special-tag-cart {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--red-orange-price);
+  padding: 5px;
+  font-size: 12px;
+  font-family: "Roboto-Bold";
+  color: var(--white);
+  max-width: 73px;
+  width: 100%;
+  transform: translate(4px, -4px);
+  text-align: center;
+}
+.meal-cards-added-cart .cart-meals .special-bacground {
+  background-color: var(--black);
+  color: var(--white);
+}
+.special-bacground .meal-control-minus,
+.special-bacground .meal-control-plus {
+  color: var(--white);
+}
+.special-summary-tag {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--red-orange-price);
+  padding: 3px;
+  font-size: 12px;
+  font-family: "Roboto-Bold";
+  color: var(--white);
+  max-width: 60px;
+  width: 100%;
+  transform: translateX(38px);
+}
+.meal-control-plus,
+.meal-control-minus {
+  font-size: 22px;
+  padding: 0;
+  color: var(--blackish-grey);
+  font-weight: 500;
+}
+
+.meal-details p {
+  position: relative;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 980px) {
-  .description-text {
+  .logo-description .description-text {
     max-width: 100%;
   }
 
-  .description-head {
+  .logo-description .description-head {
     font-size: 36px;
     line-height: 1;
   }
 
   /* Plan Card Description */
 
-  .meal-count {
+  .meal-description .meal-count {
     font-size: 20px;
   }
-  .plan-week {
+  .meal-description .meal-count .plan-week {
     font-size: 16px;
   }
-  .sale-tag {
+  .plan-card-img-block .sale-tag {
     font-size: 14px;
   }
-  .plan-total-price-text {
+  .meal-description .plan-total-price-text {
     font-size: 16px;
   }
   .plan-price {
@@ -545,28 +697,31 @@
 }
 
 @media screen and (max-width: 767px) {
-  .description-text {
+  .logo-description .description-text {
     max-width: 100%;
   }
 
-  .description-head {
+  .logo-description .description-head {
     line-height: 1;
   }
 
   /* Plan Card Description */
 
-  .meal-count {
-    font-size: 16px;
+  .meal-description .meal-count {
+    font-size: 18px;
   }
-  .plan-week {
+  .meal-description .plan-total-price-text {
+    font-size: 15px;
+  }
+  .meal-description .meal-count .plan-week {
     font-size: 14px;
   }
-  .sale-tag {
+  .plan-card-img-block .sale-tag {
     font-size: 12px;
   }
 
-  .get-started-btn {
-    min-width: 342px;
+  .section-container .get-started-btn {
+    min-width: 290px;
   }
   /* Day Section */
 
@@ -584,5 +739,144 @@
 
   .date-container .date-text-item {
     font-size: 14px;
+  }
+
+  /* Meal Page */
+
+  .add-to-cart-container .subtotal-container {
+    max-height: 150px;
+    height: 100%;
+  }
+  .add-to-cart-container .subtotal-container .next-btn-cart {
+    min-height: 55px;
+    height: 100%;
+  }
+  .meal-card {
+    min-height: 315px;
+    height: 100%;
+  }
+  .meal-card .meal-image {
+    max-width: 100%;
+    width: 100%;
+    max-height: 187px;
+    height: 100%;
+    object-fit: cover;
+  }
+  .meal-carbs {
+    font-size: 12px;
+  }
+  .meal-details {
+    gap: 16px;
+  }
+  .meal-speciality {
+    margin-bottom: 0;
+  }
+  .meal-name {
+    font-size: 14px;
+  }
+  .meal-gluten,
+  .meal-calories,
+  .meal-carbs,
+  .meal-protein,
+  .meal-speciality {
+    font-size: 14px;
+  }
+  .form-column {
+    order: 2;
+  }
+  .order-checkout-container {
+    order: 1;
+    padding-right: 0;
+  }
+  .card-order-summary {
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+  }
+  .form-container {
+    max-width: 400px;
+    width: 100%;
+    min-height: 1145px;
+    height: 100%;
+  }
+
+  .order-summary-head {
+    transform: translateX(-0);
+  }
+  .cart-items-container.show {
+    display: block;
+  }
+  .cart-items-container.show + .subtotal-container {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .cart-items-container.hide {
+    display: none;
+  }
+  .add-to-cart-container {
+    bottom: 0;
+    border-radius: 15px 15px 0 0;
+    max-width: 100%;
+    width: 100%;
+  }
+  .add-to-cart-container.expanded {
+    /* height: auto; */
+    max-height: 500px;
+  }
+  .add-to-cart-container.collapsed {
+    min-height: 150px;
+    max-height: 13%;
+    height: 100%;
+  }
+  .order-summary-head {
+    max-width: 18%;
+    width: 100%;
+  }
+  .cart-down-arrow {
+    width: 35px;
+    height: 26px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' stroke='%23D75D33' stroke-width='2' width='20' height='12'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+  .meal-card .special-tag {
+    transform: translateY(-128px);
+  }
+  .meal-details p:nth-last-child(n + 3)::after {
+    right: 10%;
+  }
+  .order-summary-head,
+  .meals-summary-head,
+  .checkout-form-head {
+    font-size: 30px;
+  }
+  .order-summary-meal-card {
+    max-width: 100%;
+    width: 100%;
+  }
+  .card-order-summary,
+  .form-container,
+  .summary-meal-card {
+    max-width: 93%;
+    width: 100%;
+    margin: auto;
+  }
+  .meal-cards-added-cart {
+    max-height: 210px;
+    height: auto;
+    overflow-y: auto;
+  }
+  .add-to-cart-container.expanded {
+    border-radius: 0;
+  }
+
+  .meal-card .special-tag {
+    bottom: 50px;
   }
 }
