@@ -1,31 +1,39 @@
 export function initCheckoutFormValidation() {
   (function () {
     const form = document.getElementById("userForm");
-    const submitBtn = document.getElementById("submitBtn");
+    const submitBtn = document.getElementById("checkout-btn");
+
     const fields = {
       fname: document.getElementById("fname"),
       lname: document.getElementById("lname"),
-      age: document.getElementById("age"),
-      emails: document.getElementById("emails"),
-      pwd: document.getElementById("pwd"),
-      cpwd: document.getElementById("cpwd"),
+      fullName: document.getElementById("fullName"),
+      fullName1: document.getElementById("fullName1"),
+      address1: document.querySelector("[name='first-address-name']"),
+      city: document.getElementById("city"),
+      state: document.getElementById("state"),
+      zip: document.getElementById("zip"),
       contact: document.getElementById("contact"),
+      emails: document.getElementById("emails"),
     };
+
     const fieldValidity = {};
 
-    // Email Validation
-    function validateEmailList(emailStr) {
-      const emails = emailStr.split(",").map((e) => e.trim());
+    function validateEmail(email) {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      return emails.every((email) => emailRegex.test(email));
+      if (!emailRegex.test(email)) return false;
+
+      const domain = email.split("@")[1];
+      const domainParts = domain.split(".");
+
+      // Check if last two parts are same (like com.com or net.net)
+      const len = domainParts.length;
+      if (len >= 2 && domainParts[len - 1] === domainParts[len - 2]) {
+        return false;
+      }
+
+      return true;
     }
-    // Password Validation
-    function validatePassword(pwd) {
-      const regex =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-      return regex.test(pwd);
-    }
-    // Validate field
+
     function validateField(field, isValid, message = "") {
       if (isValid) {
         field.classList.remove("is-invalid");
@@ -38,68 +46,46 @@ export function initCheckoutFormValidation() {
         }
       }
     }
-    // Validating single field
+
     function validateSingleField(fieldEl) {
-      const id = fieldEl.id;
+      const id = fieldEl.id || fieldEl.name;
       const oldValidity = fieldValidity[id] || false;
       let valid = true;
+
       try {
         switch (id) {
           case "fname":
           case "lname":
-            valid = fieldEl.value.trim() !== "";
-            if (!valid) {
-              validateField(fieldEl, valid);
-              break;
-            }
-            const regex = /^[A-Za-z]+$/;
-            if (valid) {
-              valid = regex.test(fieldEl.value);
-            }
-            validateField(fieldEl, valid, "Name must contain only letters.");
-            break;
-
-          case "age":
-            const age = parseInt(fieldEl.value, 10);
-            valid = age >= 18 && age <= 151;
-            validateField(fieldEl, valid, "Age must be between 18 and 151.");
-            break;
-
-          case "emails":
+          case "fullName":
+          case "fullName1":
             valid =
-              fieldEl.value.trim() !== "" && validateEmailList(fieldEl.value);
+              fieldEl.value.trim() !== "" &&
+              /^[A-Za-z\s]+$/.test(fieldEl.value);
             validateField(
               fieldEl,
               valid,
-              "Please enter valid comma-separated email addresses."
+              "This field is required and must contain only letters."
             );
             break;
 
-          case "pwd":
-            valid = validatePassword(fieldEl.value);
-            validateField(
-              fieldEl,
-              valid,
-              "Password must be at least 8 characters, contain an uppercase, lowercase, a number and a special character."
-            );
-            validateSingleField(fields.cpwd);
+          case "first-address-name":
+          case "address1":
+            valid = fieldEl.value.trim() !== "";
+            validateField(fieldEl, valid, "Address Line 1 is required.");
             break;
 
-          case "cpwd":
-            valid = fieldEl.value === fields.pwd.value && fieldEl.value !== "";
-            validateField(fieldEl, valid, "Passwords do not match.");
+          case "city":
+          case "state":
+            valid = fieldEl.value.trim() !== "";
+            validateField(fieldEl, valid, "This field is required.");
+            break;
+
+          case "zip":
+            valid = /^[0-9]{5}$/.test(fieldEl.value.trim());
+            validateField(fieldEl, valid, "ZIP must be a 5-digit number.");
             break;
 
           case "contact":
-            valid = fieldEl.value.trim() >= 0;
-            if (!valid) {
-              validateField(
-                fieldEl,
-                valid,
-                "Contact number cannot be negative."
-              );
-              break;
-            }
             valid = /^[0-9]{11}$/.test(fieldEl.value.trim());
             validateField(
               fieldEl,
@@ -107,19 +93,29 @@ export function initCheckoutFormValidation() {
               "Contact number must be exactly 11 digits."
             );
             break;
+
+          case "emails":
+            valid = validateEmail(fieldEl.value.trim());
+            validateField(
+              fieldEl,
+              valid,
+              "Please enter a valid email address."
+            );
+            break;
+
+          default:
+            break;
         }
       } catch (err) {
         console.error(`Validation error in field "${id}":`, err);
       }
 
-      // Setting current field validity
       fieldValidity[id] = fieldEl.classList.contains("is-valid");
       if (oldValidity !== fieldValidity[id]) {
-        // Only Validate button if field validity changes
         validateSubmitButton();
       }
     }
-    // Submit Button Validation
+
     function validateSubmitButton() {
       const allValid = Object.values(fields).every((field) =>
         field.classList.contains("is-valid")
@@ -127,23 +123,25 @@ export function initCheckoutFormValidation() {
       submitBtn.disabled = !allValid;
     }
 
-    // Validate Whole Form
     function validateForm() {
       Object.values(fields).forEach((field) => validateSingleField(field));
     }
-    // Adding EventListener to all fields
+
     Object.values(fields).forEach((field) => {
       field.addEventListener("input", () => validateSingleField(field));
       field.addEventListener("blur", () => validateSingleField(field));
     });
 
-    // Form submission
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       validateForm();
       if (!submitBtn.disabled) {
         alert("Form submitted successfully!");
         form.reset();
+        Object.values(fields).forEach((field) => {
+          field.classList.remove("is-valid", "is-invalid");
+        });
+        submitBtn.disabled = true;
       }
     });
   })();

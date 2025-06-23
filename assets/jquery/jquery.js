@@ -45,6 +45,16 @@ jQuery(function () {
     }
   }
 
+  // Function to display the selected delivery day
+  function displayDeliveryDayCheckout(selectedDateText) {
+    const displayDeliveryDay = document.getElementById("delivery-day-value");
+    if (displayDeliveryDay) {
+      displayDeliveryDay.textContent = selectedDateText;
+    } else {
+      console.error("Delivery day element not found.");
+    }
+  }
+
   //Delievry Day Selection
   function initDateSelection() {
     $(".next-button-delivery").on("click", function () {
@@ -66,8 +76,9 @@ jQuery(function () {
     $(".next-btn-cart").on("click", function () {
       if (!$(this).is(":disabled")) {
         const storedDate = storage.get("selectedDay");
-
         storage.set("currentStep", "checkout-step");
+
+        displayDeliveryDayCheckout(storedDate);
         navigateToStep("checkout-step");
       }
     });

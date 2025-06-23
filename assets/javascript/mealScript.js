@@ -1,3 +1,5 @@
+import { initCheckoutScript } from "./checkoutScript.js";
+
 export function initMealScript() {
   let mealCart = [];
   let price = 0;
@@ -211,6 +213,8 @@ export function initMealScript() {
       .addEventListener("click", () => updateCart(meal, true));
 
     if (meal.specialMeal) {
+      card.querySelector(".meal-info").style.backgroundColor =
+        meal.specialColor;
       const specialTag = document
         .getElementById("special-tag-template")
         .content.cloneNode(true).firstElementChild;
@@ -268,7 +272,6 @@ export function initMealScript() {
     document.getElementById("subtotal-cart-price").textContent = `$${subtotal}`;
   }
 
-  // ------------------------------ Cart and Checkout Actions ------------------------------
   // Clear all items in the cart
   function clearCart() {
     mealCart = [];
@@ -364,4 +367,8 @@ export function initMealScript() {
       "" +
       "</span> to continue.";
   }
+
+  document
+    .querySelector(".next-btn-cart")
+    .addEventListener("click", () => initCheckoutScript(subtotal, mealCart));
 }
