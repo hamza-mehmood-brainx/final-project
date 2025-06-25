@@ -3,8 +3,21 @@ jQuery(function () {
 
   //   Local storage function
   const storage = {
-    set: (key, value) => localStorage.setItem(key, value),
-    get: (key) => localStorage.getItem(key),
+    set: (key, value) => {
+      try {
+        localStorage.setItem(key, value);
+      } catch (e) {
+        console.warn("Failed to save to localStorage:", e);
+      }
+    },
+    get: (key) => {
+      try {
+        return localStorage.getItem(key);
+      } catch (e) {
+        console.warn("Failed to read from localStorage:", e);
+        return null;
+      }
+    },
   };
 
   // Toggle section and header visibility based on current step
@@ -37,7 +50,8 @@ jQuery(function () {
 
   // Function to display the selected delivery day
   function displayDeliveryDay(selectedDateText) {
-    const displayDeliveryDay = document.getElementById("delivery-date-cart");
+    const displayDeliveryDay = $("#delivery-date-cart")[0];
+
     if (displayDeliveryDay) {
       displayDeliveryDay.textContent = selectedDateText;
     } else {
