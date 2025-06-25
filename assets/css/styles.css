@@ -99,6 +99,9 @@
 .btn:focus {
   box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0);
 }
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0);
+}
 
 /* -------------------------Plan Section--------------------  */
 /* Logo & Description Section */
@@ -851,6 +854,10 @@
 
 .checkout-container .discount-price {
   color: var(--red-color);
+}
+
+.promo-code-box {
+  width: 95%;
 }
 
 .promo-code-box .apply-promo-btn {
