@@ -920,6 +920,9 @@
   .order-checkout-container .delivery-div {
     max-width: 96%;
   }
+  .meal-cards-added-cart .cart-meal-card .cart-meal-info .cart-meal-name {
+    font-size: 12px;
+  }
 }
 
 @media screen and (max-width: 767px) {
