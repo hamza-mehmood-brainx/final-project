@@ -1,6 +1,9 @@
 import { initCheckoutScript } from "./checkoutScript.js";
 
 export function initMealScript() {
+  const DOM_ELEMENTS = {
+    nextButton: document.querySelector(".next-btn-cart"),
+  };
   let mealCart = [];
   let price = 0;
   let numOfSpecialMeals = 0;
@@ -12,13 +15,13 @@ export function initMealScript() {
     try {
       const response = await fetch("assets/json/meals.json");
       if (!response.ok) {
-        throw Error("Failed to fetch meals");
+        throw new Error(`HTTP ${response.status}: Failed to fetch meals`);
       }
       const data = await response.json();
-
       return data;
     } catch (e) {
-      console.error("API Request fail", e);
+      console.error("API Request failed:", e);
+      return [];
     }
   }
 
@@ -120,6 +123,15 @@ export function initMealScript() {
       }
     });
   }
+
+  function showCartfullError() {
+    document.querySelector(".error-message").classList.remove("d-none");
+  }
+
+  function removeCartFullError() {
+    document.querySelector(".error-message").classList.add("d-none");
+  }
+
   // Add meal to cart
   function updateCart(meal) {
     const mealCountLimit = getMealCountFromStorage();
@@ -129,9 +141,11 @@ export function initMealScript() {
       toggleOrderSummaryVisibilty();
       renderCart();
       calculatePrice();
+    } else {
+      showCartfullError();
     }
 
-    const nextButton = document.querySelector(".next-btn-cart");
+    const nextButton = DOM_ELEMENTS.nextButton;
     const readyText = document.querySelector(".enter-msg-cart");
 
     if (mealCart.length === mealCountLimit) {
@@ -174,8 +188,9 @@ export function initMealScript() {
     toggleOrderSummaryVisibilty();
     renderCart();
     calculatePrice();
+    removeCartFullError();
 
-    const nextButton = document.querySelector(".next-btn-cart");
+    const nextButton = DOM_ELEMENTS.nextButton;
     const readyText = document.querySelector(".enter-msg-cart");
 
     nextButton.classList.toggle("disabled", mealCart.length !== mealCountLimit);
@@ -278,7 +293,7 @@ export function initMealScript() {
     document.querySelector(".meal-cards-added-cart").innerHTML = "";
     const countSpan = document.querySelector(".cart-item-count");
     countSpan.textContent = mealCart.length;
-    const nextButton = document.querySelector(".next-btn-cart");
+    const nextButton = DOM_ELEMENTS.nextButton;
     const readyText = document.querySelector(".enter-msg-cart");
 
     const mealCountLimit = getMealCountFromStorage();

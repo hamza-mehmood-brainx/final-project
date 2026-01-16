@@ -76,9 +76,12 @@
 .header-list {
   cursor: default;
 }
-.header-list.previous,
-.header-list.active {
+.header-list.previous {
   cursor: pointer;
+}
+
+.header-list.active:hover {
+  cursor: default;
 }
 .header-list.previous:hover {
   text-decoration: underline;
@@ -86,6 +89,18 @@
 .header-list:not(.previous):hover,
 .header-list.active:hover {
   text-decoration: none;
+}
+
+.nav-container span {
+  font-size: 14px;
+  font-family: "Roboto-Medium";
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0);
+}
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0);
 }
 
 /* -------------------------Plan Section--------------------  */
@@ -118,6 +133,7 @@
   width: 100%;
   text-align: center;
   letter-spacing: 0px;
+  font-size: 18px;
 }
 .logo-description .description-text .bigger-box-price {
   font-family: "Roboto-Bold";
@@ -553,10 +569,19 @@
 .add-to-cart-container .subtotal-container .next-btn-cart.disabled {
   opacity: 0.5;
 }
-.add-to-cart-container .subtotal-container .enter-msg-cart {
+.add-to-cart-container .error-message {
   font-family: "Roboto-Bold";
   color: var(--red-orange-price);
+  font-size: 14px;
+  letter-spacing: 0.6px;
+}
+.add-to-cart-container .subtotal-container .enter-msg-cart {
+  font-family: "Roboto-Regular";
+  color: var(--red-orange-price);
   font-size: 12px;
+}
+.add-to-cart-container .subtotal-container .enter-msg-cart #meals-count-cart {
+  font-family: "Roboto-Bold";
 }
 .subtotal-container #subtotal-cart-price {
   color: var(--red-orange-price);
@@ -664,6 +689,9 @@
   font-weight: 500;
 }
 
+.meal-control-plus:focus {
+  outline: none;
+}
 .meal-details p {
   position: relative;
 }
@@ -828,6 +856,26 @@
   color: var(--red-color);
 }
 
+.promo-code-box {
+  width: 95%;
+}
+
+.promo-code-box .apply-promo-btn {
+  background: transparent
+    linear-gradient(
+      100deg,
+      var(--btn-purple) 0%,
+      var(--btn-dark-blue-purple) 100%
+    )
+    0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px var(--checkout-btn);
+  border: none;
+  border-radius: 4px;
+  color: var(--white);
+  min-height: 35px;
+  font-family: "Roboto-Regular";
+  font-size: 14px;
+}
 /* Media Queries */
 
 @media screen and (max-width: 980px) {
@@ -872,6 +920,9 @@
   .order-checkout-container .delivery-div {
     max-width: 96%;
   }
+  .meal-cards-added-cart .cart-meal-card .cart-meal-info .cart-meal-name {
+    font-size: 12px;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -885,7 +936,7 @@
 
   /* Plan Card Description */
 
-  .meal-description .meal-count {
+  .plan-meals-card .meal-description .meal-count {
     font-size: 18px;
   }
   .meal-description .plan-total-price-text {
@@ -899,7 +950,7 @@
   }
 
   .section-container .get-started-btn {
-    min-width: 290px;
+    min-width: 342px;
   }
   /* Day Section */
 
@@ -1054,5 +1105,10 @@
   }
   .checkout-container .form-column {
     width: 92%;
+  }
+
+  .nav-container .steps-container {
+    max-height: 71px;
+    height: 100%;
   }
 }

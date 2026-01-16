@@ -47,6 +47,21 @@ export function initCheckoutFormValidation() {
       }
     }
 
+    function resetOrderSummary() {
+      // Clear numeric values
+      document.querySelector(".meals-price-sum").textContent = "$0";
+      document.querySelector(".shipping-price-sum").textContent = "$0";
+      document.querySelector(".tax-price-sum").textContent = "$0";
+      document.querySelector(".discount-price").textContent = "$0";
+      document.querySelector(".total-price-sum").textContent = "$0";
+
+      // Clear delivery date
+      document.getElementById("delivery-day-value").textContent = "";
+
+      // Clear meals card section
+      document.querySelector(".summary-meal-card").innerHTML = "";
+    }
+
     function validateSingleField(fieldEl) {
       const id = fieldEl.id || fieldEl.name;
       const oldValidity = fieldValidity[id] || false;
@@ -77,7 +92,11 @@ export function initCheckoutFormValidation() {
           case "city":
           case "state":
             valid = fieldEl.value.trim() !== "";
-            validateField(fieldEl, valid, "This field is required.");
+            if (!valid)
+              validateField(fieldEl, valid, "This field is required.");
+            valid = /^[A-Za-z . ,'-]+$/.test(fieldEl.value);
+            validateField(fieldEl, valid, "Enter valid name");
+
             break;
 
           case "zip":
@@ -137,6 +156,8 @@ export function initCheckoutFormValidation() {
       validateForm();
       if (!submitBtn.disabled) {
         alert("Form submitted successfully!");
+        localStorage.clear();
+        resetOrderSummary();
         form.reset();
         Object.values(fields).forEach((field) => {
           field.classList.remove("is-valid", "is-invalid");
