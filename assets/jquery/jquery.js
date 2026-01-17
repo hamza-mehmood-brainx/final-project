@@ -3,8 +3,21 @@ jQuery(function () {
 
   //   Local storage function
   const storage = {
-    set: (key, value) => localStorage.setItem(key, value),
-    get: (key) => localStorage.getItem(key),
+    set: (key, value) => {
+      try {
+        localStorage.setItem(key, value);
+      } catch (e) {
+        console.warn("Failed to save to localStorage:", e);
+      }
+    },
+    get: (key) => {
+      try {
+        return localStorage.getItem(key);
+      } catch (e) {
+        console.warn("Failed to read from localStorage:", e);
+        return null;
+      }
+    },
   };
 
   // Toggle section and header visibility based on current step
@@ -35,6 +48,27 @@ jQuery(function () {
     });
   }
 
+  // Function to display the selected delivery day
+  function displayDeliveryDay(selectedDateText) {
+    const displayDeliveryDay = $("#delivery-date-cart")[0];
+
+    if (displayDeliveryDay) {
+      displayDeliveryDay.textContent = selectedDateText;
+    } else {
+      console.error("Delivery day element not found.");
+    }
+  }
+
+  // Function to display the selected delivery day
+  function displayDeliveryDayCheckout(selectedDateText) {
+    const displayDeliveryDay = document.getElementById("delivery-day-value");
+    if (displayDeliveryDay) {
+      displayDeliveryDay.textContent = selectedDateText;
+    } else {
+      console.error("Delivery day element not found.");
+    }
+  }
+
   //Delievry Day Selection
   function initDateSelection() {
     $(".next-button-delivery").on("click", function () {
@@ -46,7 +80,21 @@ jQuery(function () {
       console.log("Selected Date:", selectedDate);
       storage.set("selectedDay", selectedDate);
       storage.set("currentStep", "meals-step");
+      displayDeliveryDay(selectedDate);
       navigateToStep("meals-step");
+    });
+  }
+
+  // Meal Selection and Proceed to Checkout
+  function initMealStep() {
+    $(".next-btn-cart").on("click", function () {
+      if (!$(this).is(":disabled")) {
+        const storedDate = storage.get("selectedDay");
+        storage.set("currentStep", "checkout-step");
+
+        displayDeliveryDayCheckout(storedDate);
+        navigateToStep("checkout-step");
+      }
     });
   }
 
@@ -74,4 +122,5 @@ jQuery(function () {
 
   initializeFlow();
   initDateSelection();
+  initMealStep();
 });
